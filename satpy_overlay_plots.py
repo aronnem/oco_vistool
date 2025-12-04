@@ -178,6 +178,8 @@ def get_aws_ABI_files(datetime_utc, domain, platform, hour_offsets, bands_list, 
         g_bucket = s3.Bucket('noaa-goes17')
     elif (platform[-2:] == '18'):
         g_bucket = s3.Bucket('noaa-goes18')
+    elif (platform[-2:] == '19'):
+        g_bucket = s3.Bucket('noaa-goes19')
     else:
         raise ValueError('unknown platform: ', platform)
         
@@ -263,7 +265,7 @@ def get_ABI_files(datetime_utc, center_lat,
     valid_domains = 'C', 'F'
     if domain not in valid_domains:
         raise ValueError('domain must be in '+str(valid_domains))
-    valid_platforms = 'GOES16', 'GOES17', 'GOES18'
+    valid_platforms = 'GOES16', 'GOES17', 'GOES18', 'GOES19'
     if platform not in valid_platforms:
         raise ValueError('platform must be in '+str(valid_platforms))
     # code used in filename is G16,G17,G18 for GOES16, GOES17, GOES18
